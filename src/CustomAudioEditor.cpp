@@ -7,11 +7,18 @@ CustomAudioEditor::CustomAudioEditor (RNBO::JuceAudioProcessor* const p, RNBO::C
 {
     _audioProcessor->AudioProcessor::addListener(this);
 
-    _label.setText("Hi I'm Custom Interface", NotificationType::dontSendNotification);
+  /*  _label.setText("Hi I'm Custom Interface", NotificationType::dontSendNotification);
     _label.setBounds(0, 0, 400, 300);
     _label.setColour(Label::textColourId, Colours::black);
     addAndMakeVisible(_label);
-    setSize (_label.getWidth(), _label.getHeight());
+    setSize (_label.getWidth(), _label.getHeight());*/
+
+    addAndMakeVisible(_droneSynthGUI);
+    setSize(_droneSynthGUI.getWidth(), _droneSynthGUI.getHeight());
+
+    _droneSynthGUI.setAudioProcessor(p); // <--- add this line
+    addAndMakeVisible(_droneSynthGUI);
+    setSize(_droneSynthGUI.getWidth(), _droneSynthGUI.getHeight());
 }
 
 CustomAudioEditor::~CustomAudioEditor()
